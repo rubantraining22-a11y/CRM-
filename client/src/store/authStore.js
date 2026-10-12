@@ -1,7 +1,10 @@
 import { create } from 'zustand';
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 
+  (typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+    ? 'https://whatsapp-crm-server-447670879986.asia-south1.run.app/api'
+    : 'http://localhost:5000/api');
 
 const defaultUser = {
   id: 'usr_admin_ruban',

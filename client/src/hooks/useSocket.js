@@ -2,7 +2,10 @@ import { useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import toast from 'react-hot-toast';
 
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 
+  (typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+    ? 'https://whatsapp-crm-server-447670879986.asia-south1.run.app'
+    : 'http://localhost:5000');
 
 export const useSocket = (onMessageReceived, onLeadUpdate) => {
   const socketRef = useRef(null);
