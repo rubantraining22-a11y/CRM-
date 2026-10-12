@@ -1,6 +1,8 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
-const User = require('../models/User');
+import '../config/env.js';
+import dns from 'node:dns';
+try { dns.setServers(['8.8.8.8', '1.1.1.1']); } catch {}
+import mongoose from 'mongoose';
+import User from '../models/User.js';
 
 const seed = async () => {
   try {
